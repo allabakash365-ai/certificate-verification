@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Certificate Verification</title>
+<style>
+body{
+font-family:Arial;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+width:350px;
+text-align:center;
+}
+.valid{color:green;}
+.invalid{color:red;}
+</style>
+</head>
+<body>
+
+<div class="card" id="result">
+Loading...
+</div>
+
+<script>
+const certificates = {
+  "CERT001": {
+    name: "ALLAH BAKASH",
+    date: "31-05-2026"
+  }
+};
+
+const id = new URLSearchParams(location.search).get("id");
+
+if(certificates[id]){
+ document.getElementById("result").innerHTML = `
+ <h2 class="valid">✅ VERIFIED</h2>
+ <p><b>Name:</b> ${certificates[id].name}</p>
+ <p><b>ID:</b> ${id}</p>
+ <p><b>Date:</b> ${certificates[id].date}</p>
+ `;
+}else{
+ document.getElementById("result").innerHTML =
+ '<h2 class="invalid">❌ NOT VERIFIED</h2>';
+}
+</script>
+
+</body>
+</html>
